@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@home');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/home', 'HomeController@home');
+Route::get('/pertanyaan', 'PertanyaanController@index');
 
-Route::get('/register', 'AuthController@form');
+Route::get('/pertanyaan/create', 'PertanyaanController@create');
 
-Route::post('/welcome', 'AuthController@welcome');
+Route::post('/pertanyaan', 'PertanyaanController@store');
+
+Route::get('/pertanyaan/{id}/edit', 'PertanyaanController@edit');
+
+Route::put('/pertanyaan/{id}', 'PertanyaanController@update');
+
+Route::delete('/pertanyaan/{id}', 'PertanyaanController@destroy');
